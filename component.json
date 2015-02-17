@@ -1,0 +1,17 @@
+{
+  "name": "ea",
+  "description": "Arrays and objects iterator",
+  "version": "0.1.0",
+  "keywords": [
+    "each",
+    "loop",
+    "array",
+    "object"
+  ],
+  "repository": "andrepolischuk/ea",
+  "main" : "index.js",
+  "scripts" : [
+    "index.js"
+  ],
+  "license": "MIT"
+}
