@@ -65,6 +65,18 @@ sup.objectReverse = function(obj, fn) {
 };
 
 /**
+ * Typeof
+ * @param  {Object|Array} obj
+ * @return {String}
+ * @api private
+ */
+
+function is(obj) {
+  return Object.prototype.toString.call(obj)
+    .replace(/\[\w+\s(\w+)\]/i, '$1').toLowerCase();
+}
+
+/**
  * Module
  * @param {Object|Array} obj
  * @param {Function} fn
@@ -84,7 +96,7 @@ function ea(obj, fn) {
  */
 
 ea.each = function(obj, fn) {
-  sup[ea.is(obj) + 'Each'](obj, fn);
+  sup[is(obj) + 'Each'](obj, fn);
 };
 
 /**
@@ -95,19 +107,7 @@ ea.each = function(obj, fn) {
  */
 
 ea.reverse = function(obj, fn) {
-  sup[ea.is(obj) + 'Reverse'](obj, fn);
-};
-
-/**
- * Super typeof
- * @param  {Object|Array} obj
- * @return {String}
- * @api public
- */
-
-ea.is = function(obj) {
-  return Object.prototype.toString.call(obj)
-    .replace(/\[\w+\s(\w+)\]/i, '$1').toLowerCase();
+  sup[is(obj) + 'Reverse'](obj, fn);
 };
 
 /**

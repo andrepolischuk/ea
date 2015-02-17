@@ -52,14 +52,6 @@ ea(user, function(value, key) {
 
   Iterate object in reverse order
 
-### ea.is(array)
-
-  Return `array` for array
-
-### ea.is(object)
-
-  Return `object` for object
-
 ## License
 
   MIT

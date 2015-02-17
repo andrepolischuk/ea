@@ -9,12 +9,6 @@ describe('ea', function() {
     age : 25
   };
 
-  describe('#is(obj)', function() {
-    it('should return `object`', function() {
-      ea.is(user).should.eql('object');
-    });
-  });
-
   describe('#each(obj, fn)', function() {
 
     it('should return index', function() {
@@ -60,12 +54,6 @@ describe('ea', function() {
     'Peterburg',
     'Novgorod'
   ];
-
-  describe('#is(arr)', function() {
-    it('should return `array`', function() {
-      ea.is(cities).should.eql('array');
-    });
-  });
 
   describe('#each(arr, fn)', function() {
 
