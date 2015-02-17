@@ -2,19 +2,26 @@
 'use strict';
 
 /**
- * Super methods
- * @api private
+ * Has own property
  */
 
-var sup = {};
+var has = Object.prototype.hasOwnProperty;
+
+/**
+ * Types methods
+ */
+
+var array = {};
+var object = {};
 
 /**
  * Array each
+ * @param {Array} obj
  * @param {Function} fn
  * @api private
  */
 
-sup.arrayEach = function(obj, fn) {
+array.each = function(obj, fn) {
   for (var i = 0; i < obj.length; i++) {
     fn(obj[i], i);
   }
@@ -22,11 +29,12 @@ sup.arrayEach = function(obj, fn) {
 
 /**
  * Array reverse each
+ * @param {Array} obj
  * @param {Function} fn
  * @api private
  */
 
-sup.arrayReverse = function(obj, fn) {
+array.reverse = function(obj, fn) {
   for (var i = obj.length - 1; i >= 0 ; i--) {
     fn(obj[i], i);
   }
@@ -34,13 +42,14 @@ sup.arrayReverse = function(obj, fn) {
 
 /**
  * Object each
+ * @param {Object} obj
  * @param {Function} fn
  * @api private
  */
 
-sup.objectEach = function(obj, fn) {
+object.each = function(obj, fn) {
   for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
+    if (has.call(obj, i)) {
       fn(obj[i], i);
     }
   }
@@ -48,14 +57,15 @@ sup.objectEach = function(obj, fn) {
 
 /**
  * Object reverse each
+ * @param {Object} obj
  * @param {Function} fn
  * @api private
  */
 
-sup.objectReverse = function(obj, fn) {
+object.reverse = function(obj, fn) {
   var keys = [];
   for (var k in obj) {
-    if (obj.hasOwnProperty(k)) {
+    if (has.call(obj, k)) {
       keys.push(k);
     }
   }
@@ -63,6 +73,26 @@ sup.objectReverse = function(obj, fn) {
     fn(obj[keys[i]], keys[i]);
   }
 };
+
+/**
+ * Each router
+ * @param  {String} method
+ * @param  {Object|Array} obj
+ * @param  {Function} fn
+ * @return {Function}
+ * @api private
+ */
+
+function route(method, obj, fn) {
+  if (typeof fn === 'function') {
+    switch (is(obj)) {
+      case 'array' :
+        return array[method](obj, fn);
+      case 'object' :
+        return object[method](obj, fn);
+    }
+  }
+}
 
 /**
  * Typeof
@@ -89,25 +119,27 @@ function ea(obj, fn) {
 }
 
 /**
- * Super each
+ * Each
  * @param {Object|Array} obj
  * @param {Function} fn
+ * @return {Function}
  * @api public
  */
 
 ea.each = function(obj, fn) {
-  sup[is(obj) + 'Each'](obj, fn);
+  return route('each', obj, fn);
 };
 
 /**
- * Super reverse each
+ * Reverse each
  * @param {Object|Array} obj
  * @param {Function} fn
+ * @return {Function}
  * @api public
  */
 
 ea.reverse = function(obj, fn) {
-  sup[is(obj) + 'Reverse'](obj, fn);
+  return route('reverse', obj, fn);
 };
 
 /**

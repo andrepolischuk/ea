@@ -77,7 +77,7 @@ describe('ea', function() {
 
   describe('#reverse(arr, fn)', function() {
 
-    it('should return index', function() {
+    it('should return reverse index', function() {
       var vals = [];
       ea.reverse(cities, function(val, i) {
         vals.push(i);
@@ -85,7 +85,7 @@ describe('ea', function() {
       vals.should.eql([2, 1, 0]);
     });
 
-    it('should return values', function() {
+    it('should return reverse values', function() {
       var vals = [];
       ea.reverse(cities, function(val, i) {
         vals.push(val);
