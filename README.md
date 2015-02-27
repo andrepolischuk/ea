@@ -1,13 +1,13 @@
 # Ea
 
-  Arrays and objects iterator
+  Arrays, objects and strings iterator
 
 ## Instalation
 
   Browser:
 
 ```html
-<script src="https://cdn.rawgit.com/andrepolischuk/ea/0.2.0/dist/ea.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/ea/0.3.0/ea.min.js"></script>
 ```
 
   Component(1):
@@ -44,6 +44,16 @@ ea(user, function(value, key) {
 });
 ```
 
+### ea(string, fn)
+
+  Iterate string
+
+```js
+ea('hello', function(value, key) {
+
+});
+```
+
 ### ea.reverse(array, fn)
 
   Iterate array in reverse order
@@ -51,6 +61,10 @@ ea(user, function(value, key) {
 ### ea.reverse(object, fn)
 
   Iterate object in reverse order
+
+### ea.reverse(string, fn)
+
+  Iterate string in reverse order
 
 ## License
 

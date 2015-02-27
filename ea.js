@@ -95,33 +95,75 @@
 'use strict';
 
 /**
+ * Module dependencies
+ */
+
+try {
+  var type = require('type');
+} catch (err) {
+  var type = require('component-type');
+}
+
+/**
  * Has own property
  */
 
 var has = Object.prototype.hasOwnProperty;
 
 /**
- * Types methods
+ * Expose direct iterate
  */
 
-var array = {};
-var object = {};
+module.exports = each;
 
 /**
- * Array each
+ * Expose reverse iterate
+ * @param {Object|Array} obj
+ * @param {Function} fn
+ * @return {Function}
+ * @api public
+ */
+
+module.exports.reverse = function(obj, fn) {
+  return each(obj, fn, 'reverse');
+};
+
+/**
+ * Iteration router
+ * @param {Object|Array} obj
+ * @param {Function} fn
+ * @return {Function}
+ * @api public
+ */
+
+function each(obj, fn, direction) {
+  if (typeof fn === 'function') {
+    switch (type(obj)) {
+      case 'array':
+        return (array[direction] || array)(obj, fn);
+      case 'object':
+        return (object[direction] || object)(obj, fn);
+      case 'string':
+        return (string[direction] || string)(obj, fn);
+    }
+  }
+}
+
+/**
+ * Iterate array
  * @param {Array} obj
  * @param {Function} fn
  * @api private
  */
 
-array.each = function(obj, fn) {
+function array(obj, fn) {
   for (var i = 0; i < obj.length; i++) {
     fn(obj[i], i);
   }
-};
+}
 
 /**
- * Array reverse each
+ * Iterate array in reverse order
  * @param {Array} obj
  * @param {Function} fn
  * @api private
@@ -134,22 +176,22 @@ array.reverse = function(obj, fn) {
 };
 
 /**
- * Object each
+ * Iterate object
  * @param {Object} obj
  * @param {Function} fn
  * @api private
  */
 
-object.each = function(obj, fn) {
+function object(obj, fn) {
   for (var i in obj) {
     if (has.call(obj, i)) {
       fn(obj[i], i);
     }
   }
-};
+}
 
 /**
- * Object reverse each
+ * Iterate object in reverse order
  * @param {Object} obj
  * @param {Function} fn
  * @api private
@@ -168,78 +210,67 @@ object.reverse = function(obj, fn) {
 };
 
 /**
- * Each router
- * @param  {String} method
- * @param  {Object|Array} obj
- * @param  {Function} fn
- * @return {Function}
+ * Iterate string
+ * @param {Array} obj
+ * @param {Function} fn
  * @api private
  */
 
-function route(method, obj, fn) {
-  if (typeof fn === 'function') {
-    switch (is(obj)) {
-      case 'array' :
-        return array[method](obj, fn);
-      case 'object' :
-        return object[method](obj, fn);
-    }
+function string(obj, fn) {
+  for (var i = 0; i < obj.length; i++) {
+    fn(obj.charAt(i), i);
   }
 }
 
 /**
- * Typeof
- * @param  {Object|Array} obj
- * @return {String}
+ * Iterate string in reverse order
+ * @param {Array} obj
+ * @param {Function} fn
  * @api private
  */
 
-function is(obj) {
-  return Object.prototype.toString.call(obj)
-    .replace(/\[\w+\s(\w+)\]/i, '$1').toLowerCase();
-}
-
-/**
- * Module
- * @param {Object|Array} obj
- * @param {Function} fn
- * @return {Function}
- * @api public
- */
-
-function ea(obj, fn) {
-  return ea.each(obj, fn);
-}
-
-/**
- * Each
- * @param {Object|Array} obj
- * @param {Function} fn
- * @return {Function}
- * @api public
- */
-
-ea.each = function(obj, fn) {
-  return route('each', obj, fn);
+string.reverse = function(obj, fn) {
+  for (var i = obj.length - 1; i >= 0 ; i--) {
+    fn(obj.charAt(i), i);
+  }
 };
 
+}, {"type":2,"component-type":2}],
+2: [function(require, module, exports) {
 /**
- * Reverse each
- * @param {Object|Array} obj
- * @param {Function} fn
- * @return {Function}
+ * toString ref.
+ */
+
+var toString = Object.prototype.toString;
+
+/**
+ * Return the type of `val`.
+ *
+ * @param {Mixed} val
+ * @return {String}
  * @api public
  */
 
-ea.reverse = function(obj, fn) {
-  return route('reverse', obj, fn);
+module.exports = function(val){
+  switch (toString.call(val)) {
+    case '[object Date]': return 'date';
+    case '[object RegExp]': return 'regexp';
+    case '[object Arguments]': return 'arguments';
+    case '[object Array]': return 'array';
+    case '[object Error]': return 'error';
+  }
+
+  if (val === null) return 'null';
+  if (val === undefined) return 'undefined';
+  if (val !== val) return 'nan';
+  if (val && val.nodeType === 1) return 'element';
+
+  val = val.valueOf
+    ? val.valueOf()
+    : Object.prototype.valueOf.apply(val)
+
+  return typeof val;
 };
-
-/**
- * Module exports
- */
-
-module.exports = ea;
 
 }, {}]}, {}, {"1":""})
 );

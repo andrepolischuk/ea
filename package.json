@@ -1,12 +1,14 @@
 {
   "name": "ea",
-  "description": "Arrays and objects iterator",
-  "version": "0.2.0",
+  "description": "Arrays, objects and strings iterator",
+  "version": "0.3.0",
   "keywords": [
     "each",
-    "loop",
+    "iterate",
+    "reverse",
     "array",
-    "object"
+    "object",
+    "string"
   ],
   "repository": {
     "type": "git",
