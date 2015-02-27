@@ -1,98 +1,120 @@
 
 var ea = require('..');
-var should = require('should');
+var assert = require('assert');
 
-describe('ea', function() {
+var user = {
+  name : 'Petr',
+  age : 25
+};
 
-  var user = {
-    name : 'Petr',
-    age : 25
-  };
+describe('ea(obj, fn)', function() {
 
-  describe('#each(obj, fn)', function() {
-
-    it('should return index', function() {
-      var vals = [];
-      ea(user, function(val, key) {
-        vals.push(key);
-      });
-      vals.should.eql(['name', 'age']);
+  it('should return index', function() {
+    var vals = [];
+    ea(user, function(val, key) {
+      vals.push(key);
     });
-
-    it('should return key/value pairs', function() {
-      var vals = [];
-      ea(user, function(val, key) {
-        vals.push([key, val]);
-      });
-      vals.should.eql([['name', 'Petr'], ['age', 25]]);
-    });
-
+    assert.deepEqual(['name', 'age'], vals);
   });
 
-  describe('#reverse(obj, fn)', function() {
-
-    it('should return reverse index', function() {
-      var vals = [];
-      ea.reverse(user, function(val, key) {
-        vals.push(key);
-      });
-      vals.should.eql(['age', 'name']);
+  it('should return key/value pairs', function() {
+    var vals = [];
+    ea(user, function(val, key) {
+      vals.push([key, val]);
     });
-
-    it('should return reverse key/value pairs', function() {
-      var vals = [];
-      ea.reverse(user, function(val, key) {
-        vals.push([key, val]);
-      });
-      vals.should.eql([['age', 25], ['name', 'Petr']]);
-    });
-
+    assert.deepEqual([['name', 'Petr'], ['age', 25]], vals);
   });
 
-  var cities = [
-    'Moscow',
-    'Peterburg',
-    'Novgorod'
-  ];
+});
 
-  describe('#each(arr, fn)', function() {
+describe('ea.reverse(obj, fn)', function() {
 
-    it('should return index', function() {
-      var vals = [];
-      ea(cities, function(val, i) {
-        vals.push(i);
-      });
-      vals.should.eql([0, 1, 2]);
+  it('should return reverse index', function() {
+    var vals = [];
+    ea.reverse(user, function(val, key) {
+      vals.push(key);
     });
-
-    it('should return values', function() {
-      var vals = [];
-      ea(cities, function(val, i) {
-        vals.push(val);
-      });
-      vals.should.eql(['Moscow', 'Peterburg', 'Novgorod']);
-    });
-
+    assert.deepEqual(['age', 'name'], vals);
   });
 
-  describe('#reverse(arr, fn)', function() {
-
-    it('should return reverse index', function() {
-      var vals = [];
-      ea.reverse(cities, function(val, i) {
-        vals.push(i);
-      });
-      vals.should.eql([2, 1, 0]);
+  it('should return reverse key/value pairs', function() {
+    var vals = [];
+    ea.reverse(user, function(val, key) {
+      vals.push([key, val]);
     });
+    assert.deepEqual([['age', 25], ['name', 'Petr']], vals);
+  });
 
-    it('should return reverse values', function() {
-      var vals = [];
-      ea.reverse(cities, function(val, i) {
-        vals.push(val);
-      });
-      vals.should.eql(['Novgorod', 'Peterburg', 'Moscow']);
+});
+
+var cities = [
+  'Moscow',
+  'Peterburg',
+  'Novgorod'
+];
+
+describe('ea(arr, fn)', function() {
+
+  it('should return index', function() {
+    var vals = [];
+    ea(cities, function(val, i) {
+      vals.push(i);
     });
+    assert.deepEqual([0, 1, 2], vals);
+  });
 
+  it('should return values', function() {
+    var vals = [];
+    ea(cities, function(val, i) {
+      vals.push(val);
+    });
+    assert.deepEqual(['Moscow', 'Peterburg', 'Novgorod'], vals);
+  });
+
+});
+
+describe('ea.reverse(arr, fn)', function() {
+
+  it('should return reverse index', function() {
+    var vals = [];
+    ea.reverse(cities, function(val, i) {
+      vals.push(i);
+    });
+    assert.deepEqual([2, 1, 0], vals);
+  });
+
+  it('should return reverse values', function() {
+    var vals = [];
+    ea.reverse(cities, function(val, i) {
+      vals.push(val);
+    });
+    assert.deepEqual(['Novgorod', 'Peterburg', 'Moscow'], vals);
+  });
+
+});
+
+var hello = 'hello';
+
+describe('ea(str, fn)', function() {
+
+  it('should return values', function() {
+    var vals = [];
+    ea(hello, function(val, i) {
+      vals.push(val);
+    });
+    assert.deepEqual(['h', 'e', 'l', 'l', 'o'], vals);
+  });
+
+});
+
+describe('ea.reverse(str, fn)', function() {
+
+  it('should return reverse values', function() {
+    var vals = [];
+    ea.reverse(hello, function(val, i) {
+      vals.push(val);
+    });
+    assert.deepEqual(['o', 'l', 'l', 'e', 'h'], vals);
   });
 
 });
