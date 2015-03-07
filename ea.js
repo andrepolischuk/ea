@@ -142,6 +142,9 @@ function each(obj, fn, direction) {
       case 'array':
         return (array[direction] || array)(obj, fn);
       case 'object':
+        if (type(obj.length) === 'number') {
+          return (array[direction] || array)(obj, fn);
+        }
         return (object[direction] || object)(obj, fn);
       case 'string':
         return (string[direction] || string)(obj, fn);
