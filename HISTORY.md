@@ -1,3 +1,8 @@
+# 0.3.2 / 2015.04.12
+
+  * Add travis
+  * Fix browserify support
+
 # 0.3.1 / 2015.03.08
 
   * Fix objects with length
