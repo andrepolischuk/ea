@@ -2,9 +2,11 @@
 
   Arrays, objects and strings iterator
 
+  [![Build Status](https://travis-ci.org/andrepolischuk/ea.svg?branch=master)](https://travis-ci.org/andrepolischuk/ea)
+
 ## Instalation
 
-  Browser:
+  UMD:
 
 ```html
 <script src="https://cdn.rawgit.com/andrepolischuk/ea/0.3.1/ea.min.js"></script>
