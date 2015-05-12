@@ -1,16 +1,18 @@
 
-var ea = require('..');
+'use strict';
+
+var each = require('..');
 var assert = require('assert');
 
 var user = {
-  name : 'Petr',
-  age : 25
+  name: 'Petr',
+  age: 25
 };
 
-describe('ea(obj, fn)', function() {
+describe('each(obj, fn)', function() {
   it('should return index', function() {
     var vals = [];
-    ea(user, function(val, key) {
+    each(user, function(val, key) {
       vals.push(key);
     });
     assert.deepEqual(['name', 'age'], vals);
@@ -18,17 +20,17 @@ describe('ea(obj, fn)', function() {
 
   it('should return key/value pairs', function() {
     var vals = [];
-    ea(user, function(val, key) {
+    each(user, function(val, key) {
       vals.push([key, val]);
     });
     assert.deepEqual([['name', 'Petr'], ['age', 25]], vals);
   });
 });
 
-describe('ea.reverse(obj, fn)', function() {
+describe('each.reverse(obj, fn)', function() {
   it('should return reverse index', function() {
     var vals = [];
-    ea.reverse(user, function(val, key) {
+    each.reverse(user, function(val, key) {
       vals.push(key);
     });
     assert.deepEqual(['age', 'name'], vals);
@@ -36,7 +38,7 @@ describe('ea.reverse(obj, fn)', function() {
 
   it('should return reverse key/value pairs', function() {
     var vals = [];
-    ea.reverse(user, function(val, key) {
+    each.reverse(user, function(val, key) {
       vals.push([key, val]);
     });
     assert.deepEqual([['age', 25], ['name', 'Petr']], vals);
@@ -49,10 +51,10 @@ var cities = [
   'Novgorod'
 ];
 
-describe('ea(arr, fn)', function() {
+describe('each(arr, fn)', function() {
   it('should return index', function() {
     var vals = [];
-    ea(cities, function(val, i) {
+    each(cities, function(val, i) {
       vals.push(i);
     });
     assert.deepEqual([0, 1, 2], vals);
@@ -60,17 +62,17 @@ describe('ea(arr, fn)', function() {
 
   it('should return values', function() {
     var vals = [];
-    ea(cities, function(val, i) {
+    each(cities, function(val) {
       vals.push(val);
     });
     assert.deepEqual(['Moscow', 'Peterburg', 'Novgorod'], vals);
   });
 });
 
-describe('ea.reverse(arr, fn)', function() {
+describe('each.reverse(arr, fn)', function() {
   it('should return reverse index', function() {
     var vals = [];
-    ea.reverse(cities, function(val, i) {
+    each.reverse(cities, function(val, i) {
       vals.push(i);
     });
     assert.deepEqual([2, 1, 0], vals);
@@ -78,7 +80,7 @@ describe('ea.reverse(arr, fn)', function() {
 
   it('should return reverse values', function() {
     var vals = [];
-    ea.reverse(cities, function(val, i) {
+    each.reverse(cities, function(val) {
       vals.push(val);
     });
     assert.deepEqual(['Novgorod', 'Peterburg', 'Moscow'], vals);
@@ -87,20 +89,20 @@ describe('ea.reverse(arr, fn)', function() {
 
 var hello = 'hello';
 
-describe('ea(str, fn)', function() {
+describe('each(str, fn)', function() {
   it('should return values', function() {
     var vals = [];
-    ea(hello, function(val, i) {
+    each(hello, function(val) {
       vals.push(val);
     });
     assert.deepEqual(['h', 'e', 'l', 'l', 'o'], vals);
   });
 });
 
-describe('ea.reverse(str, fn)', function() {
+describe('each.reverse(str, fn)', function() {
   it('should return reverse values', function() {
     var vals = [];
-    ea.reverse(hello, function(val, i) {
+    each.reverse(hello, function(val) {
       vals.push(val);
     });
     assert.deepEqual(['o', 'l', 'l', 'e', 'h'], vals);

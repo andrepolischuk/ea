@@ -25,6 +25,7 @@ module.exports = each;
 
 /**
  * Expose reverse iterate
+ *
  * @param {Object|Array} obj
  * @param {Function} fn
  * @return {Function}
@@ -37,6 +38,7 @@ module.exports.reverse = function(obj, fn) {
 
 /**
  * Iteration router
+ *
  * @param {Object|Array} obj
  * @param {Function} fn
  * @return {Function}
@@ -61,6 +63,7 @@ function each(obj, fn, direction) {
 
 /**
  * Iterate array
+ *
  * @param {Array} obj
  * @param {Function} fn
  * @api private
@@ -74,19 +77,21 @@ function array(obj, fn) {
 
 /**
  * Iterate array in reverse order
+ *
  * @param {Array} obj
  * @param {Function} fn
  * @api private
  */
 
 array.reverse = function(obj, fn) {
-  for (var i = obj.length - 1; i >= 0 ; i--) {
+  for (var i = obj.length - 1; i >= 0; i--) {
     fn(obj[i], i);
   }
 };
 
 /**
  * Iterate object
+ *
  * @param {Object} obj
  * @param {Function} fn
  * @api private
@@ -102,6 +107,7 @@ function object(obj, fn) {
 
 /**
  * Iterate object in reverse order
+ *
  * @param {Object} obj
  * @param {Function} fn
  * @api private
@@ -121,6 +127,7 @@ object.reverse = function(obj, fn) {
 
 /**
  * Iterate string
+ *
  * @param {Array} obj
  * @param {Function} fn
  * @api private
@@ -134,13 +141,14 @@ function string(obj, fn) {
 
 /**
  * Iterate string in reverse order
+ *
  * @param {Array} obj
  * @param {Function} fn
  * @api private
  */
 
 string.reverse = function(obj, fn) {
-  for (var i = obj.length - 1; i >= 0 ; i--) {
+  for (var i = obj.length - 1; i >= 0; i--) {
     fn(obj.charAt(i), i);
   }
 };

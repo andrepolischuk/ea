@@ -1,27 +1,12 @@
-# Ea
+# ea [![Build Status](https://travis-ci.org/andrepolischuk/ea.svg?branch=master)](https://travis-ci.org/andrepolischuk/ea)
 
-  Arrays, objects and strings iterator
-
-  [![Build Status](https://travis-ci.org/andrepolischuk/ea.svg?branch=master)](https://travis-ci.org/andrepolischuk/ea)
+  > Arrays, objects and strings iterator
 
 ## Instalation
 
-  UMD:
-
-```html
-<script src="https://cdn.rawgit.com/andrepolischuk/ea/0.3.2/ea.min.js"></script>
-```
-
-  Component(1):
-
 ```sh
+$ npm install --save ea
 $ component install andrepolischuk/ea
-```
-
-  Npm:
-
-```sh
-$ npm install ea
 ```
 
 ## API

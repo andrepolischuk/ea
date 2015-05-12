@@ -10,10 +10,7 @@
     "object",
     "string"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/andrepolischuk/ea.git"
-  },
+  "repository": "andrepolischuk/ea",
   "dependencies": {
     "component-type": "^1.1.0"
   },
@@ -24,6 +21,9 @@
     "type": "component-type"
   },
   "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
   "license": "MIT"
 }
