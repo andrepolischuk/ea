@@ -6,6 +6,9 @@
 
 ```sh
 $ npm install --save ea
+```
+
+```sh
 $ component install andrepolischuk/ea
 ```
 
