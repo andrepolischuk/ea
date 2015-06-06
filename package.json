@@ -1,7 +1,7 @@
 {
   "name": "ea",
   "description": "Arrays, objects and strings iterator",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "keywords": [
     "each",
     "iterate",
