@@ -2,14 +2,14 @@
 
   > Arrays, objects and strings iterator
 
-## Instalation
+## Install
 
 ```sh
-$ npm install --save ea
+npm install --save ea
 ```
 
 ```sh
-$ component install andrepolischuk/ea
+component install andrepolischuk/ea
 ```
 
 ## API

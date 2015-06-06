@@ -1,7 +1,7 @@
 
 'use strict';
 
-var each = require('..');
+var each = require('./');
 var assert = require('assert');
 
 var user = {
