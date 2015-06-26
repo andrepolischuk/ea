@@ -70,7 +70,7 @@ function each(obj, fn, direction) {
  */
 
 function array(obj, fn) {
-  for (var i = 0; i < obj.length; i++) {
+  for (var i = 0, len = obj.length; i < len; i++) {
     fn(obj[i], i);
   }
 }
@@ -134,7 +134,7 @@ object.reverse = function(obj, fn) {
  */
 
 function string(obj, fn) {
-  for (var i = 0; i < obj.length; i++) {
+  for (var i = 0, len = obj.length; i < len; i++) {
     fn(obj.charAt(i), i);
   }
 }
