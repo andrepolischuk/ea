@@ -1,6 +1,8 @@
-# ea [![Build Status](https://travis-ci.org/andrepolischuk/ea.svg?branch=master)](https://travis-ci.org/andrepolischuk/ea)
+# ea [![Build Status][travis-image]][travis-url]
 
   > Arrays, objects and strings iterator
+
+  [each-reverse][each-reverse] - module for reverse iterations
 
 ## Install
 
@@ -47,3 +49,8 @@ ea('hello', function(value, key) {
 ## License
 
   MIT
+
+[travis-url]: https://travis-ci.org/andrepolischuk/ea
+[travis-image]: https://travis-ci.org/andrepolischuk/ea.svg?branch=master
+
+[each-reverse]: https://github.com/andrepolischuk/each-reverse
