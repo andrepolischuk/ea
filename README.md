@@ -44,18 +44,6 @@ ea('hello', function(value, key) {
 });
 ```
 
-### ea.reverse(array, fn)
-
-  Iterate array in reverse order
-
-### ea.reverse(object, fn)
-
-  Iterate object in reverse order
-
-### ea.reverse(string, fn)
-
-  Iterate string in reverse order
-
 ## License
 
   MIT
